@@ -1,0 +1,8 @@
+#main-content {
+  flex: auto;
+  height: 100vh;
+}
+
+#main-content > #single-spa-application\:\@smart-hotel\/container {
+  height: 100%;
+}

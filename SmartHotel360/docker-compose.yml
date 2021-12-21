@@ -1,0 +1,81 @@
+version: '3.8'
+services:
+  auth:
+    image: smart-hotel/auth
+    container_name: smart-hotel-auth
+    ports:
+      - "9001:9001"
+    build:
+      context: ./smart-hotel-auth
+    restart: unless-stopped
+
+  container:
+    image: smart-hotel/container
+    container_name: smart-hotel-container
+    ports:
+      - "9002:9002"
+    build:
+      context: ./smart-hotel-container
+    restart: unless-stopped
+
+  navbar:
+    image: smart-hotel/navbar
+    container_name: smart-hotel-navbar
+    ports:
+      - "9003:9003"
+    build:
+      context: ./smart-hotel-navbar
+    restart: unless-stopped
+
+  bookings:
+    image: smart-hotel/bookings
+    container_name: smart-hotel-bookings
+    ports:
+      - "9004:9004"
+    build:
+      context: ./smart-hotel-bookings
+    restart: unless-stopped
+
+  reviews:
+    image: smart-hotel/reviews
+    container_name: smart-hotel-reviews
+    ports:
+      - "9005:9005"
+    build:
+      context: ./smart-hotel-reviews
+    restart: unless-stopped
+
+  tasks:
+    image: smart-hotel/tasks
+    container_name: smart-hotel-tasks
+    ports:
+      - "9006:9006"
+    build:
+      context: ./smart-hotel-tasks
+    restart: unless-stopped
+
+  utils:
+    image: smart-hotel/utils
+    container_name: smart-hotel-utils
+    ports:
+      - "9007:9007"
+    build:
+      context: ./smart-hotel-utils
+    restart: unless-stopped
+
+  host:
+    image: smart-hotel/host
+    container_name: smart-hotel-host
+    ports:
+      - "9000:9000"
+    build:
+      context: ./smart-hotel-host
+    depends_on:
+      - auth
+      - container
+      - navbar
+      - bookings
+      - reviews
+      - tasks
+      - utils
+    restart: unless-stopped
