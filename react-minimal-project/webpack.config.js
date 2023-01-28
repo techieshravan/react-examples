@@ -1,15 +1,15 @@
 module.exports = {
   entry: './src/app',
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
-      }
-    ]
-  }
+        use: 'babel-loader',
+      },
+    ],
+  },
 };
